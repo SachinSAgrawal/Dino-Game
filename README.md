@@ -3,7 +3,7 @@
 ![screenshot](screenshot.png)
 
 ## About
-Play a clone of the iconic Google Chrome no-internet [Dinosaur Game](chrome://dino) [^1] on your wrist. I looked all over for something like this, and I couldn't find anything remotely close in quality, so I decided to make this using pure SwiftUI for fun. If you like this game or enjoyed playing it, I would appreciate if you starred it or even shared it with your friends. I also don't expect to work on this too much more, as I am quite satisfied with the end result.
+Play a clone of the iconic Google Chrome no-internet Dinosaur Game (`chrome://dino` for Chrome only) on your wrist. I looked all over for something like this, and I couldn't find anything remotely close in quality, so I decided to make this using pure SwiftUI for fun. If you like this game or enjoyed playing it, I would appreciate if you starred it or even shared it with your friends. I also don't expect to work on this too much more, as I am quite satisfied with the end result.
 
 ## Inspiration
 I initially recreated the [Dino Game for Fitbit](https://gallery.fitbit.com/details/eef441ed-b2b5-49ec-b1c6-fbfa8177453f) smartwatches, namely the original Versas, a few years ago before I started wearing an Apple Watch. (In fact, you can see some of my other open-source Fitbit apps on my Github, so go check those out.) However, that app was quite buggy in terms of collision detection and the dinosaur sprite. It also became obsolete once I got my Apple Watch since it no longer had any use for me. That is the inspiration for the UI, and both are almost identical, down to the same sprite images and haptics. This does have nicer animations and the implementation is slightly better, though.
@@ -39,5 +39,3 @@ Sachin Agrawal: I'm a self-taught programmer who knows many languages and I'm in
 
 ## License
 This package is licensed under the [MIT License](LICENSE.txt).
-
-[^1]: Only works using Chrome as your browser.
