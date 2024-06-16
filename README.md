@@ -34,6 +34,13 @@ The watch must be paired with a device running iOS 13.0 or newer.
 ## Bugs
 If you find one, feel free to open up a new issue or even better, create a pull request fixing it. But then again, this game is extremely simple, so I don't expect for there to be any.
 
+## Change Log
+* v1.0 - initial release
+* v1.1 - digital crown support
+
+## To-Do List
+- [ ] Add ability to use Double Tap gesture <img src="https://help.apple.com/assets/6580A106ABAA01F3080E7505/6580A11008DFECBA0F060581/en_US/c157f2233cff9e4cf78134124ff24ecd.png" height="12" width="12">
+
 ## Contributors
 Sachin Agrawal: I'm a self-taught programmer who knows many languages and I'm into app, game, and web development. For more information, check out my website or Github profile. If you would like to contact me, my email is [github@sachin.email](mailto:github@sachin.email).
 

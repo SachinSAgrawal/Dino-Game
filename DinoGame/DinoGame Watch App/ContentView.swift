@@ -27,6 +27,8 @@ struct ContentView: View {
     @State private var line1X: CGFloat = WKInterfaceDevice.current().screenBounds.width * 3 / 4
     @State private var line2X: CGFloat = WKInterfaceDevice.current().screenBounds.width / 4 - 50
     @State private var cloudX: CGFloat = WKInterfaceDevice.current().screenBounds.width
+    @State private var crownRotation: Double = 0
+    @State private var velocity = 0.0
 
     let gravity: CGFloat = 0.8
     let jumpVelocity: CGFloat = -10.0
@@ -84,7 +86,7 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .offset(x: line2X, y: WKInterfaceDevice.current().screenBounds.height / 2 - groundHeight / 2 - 10)
 
-            // Score and High Score display
+            // Score displays
             VStack(alignment: .leading) {
                 Text("Score: \(score)")
                     .font(.system(size: 14))
@@ -111,7 +113,7 @@ struct ContentView: View {
                 .frame(width: 40, height: 40)
                 .offset(x: -WKInterfaceDevice.current().screenBounds.width / 4, y: dinoY + WKInterfaceDevice.current().screenBounds.height / 2 - 70)
             
-            // Obstacle or Pterodactyl
+            // Cactus or pterodactyl
             if showPterodactyl {
                 Image(pterodactylImage)
                     .resizable()
@@ -125,14 +127,17 @@ struct ContentView: View {
             }
         }
         .onTapGesture {
-            if !isJumping && !gameOver {
-                isJumping = true
-                velocityY = jumpVelocity
-                dinoImage = "trex"
-                WKInterfaceDevice.current().play(.click)
+            jump()
+        }
+        .focusable()
+        .digitalCrownRotation(detent: $crownRotation, from: 0.0, through: 1.0, by: 1.0, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: false) { crownEvent in
+            if crownEvent.velocity != 0.0 {
+                jump()
             }
         }
-        .onAppear(perform: startGame)
+        .onAppear {
+            startGame()
+        }
         .alert(isPresented: $gameOver) {
             Alert(title: Text("Game Over"), message: Text("Score: \(score)"), dismissButton: .default(Text("Restart"), action: {
                 resetGame()
@@ -161,12 +166,19 @@ struct ContentView: View {
     }
     
     func startAnimationTimers() {
-        // Animation timer for dinosaur running and pterodactyl flying
+        // Animation timer for dinosaur running
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             if !gameOver && !isJumping {
                 dinoFrame = dinoFrame == 1 ? 2 : 1
                 dinoImage = "trex-frame_\(dinoFrame)"
             }
+            if gameOver {
+                timer.invalidate()
+            }
+        }
+        
+        // And pterodactyl flying
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { timer in
             if !gameOver && showPterodactyl {
                 pterodactylFrame = pterodactylFrame == 1 ? 2 : 1
                 pterodactylImage = "bird-frame_\(pterodactylFrame)"
@@ -178,6 +190,7 @@ struct ContentView: View {
     }
     
     func startJumpingTimer() {
+        // Allow jumps to be detected without a delay
         Timer.scheduledTimer(withTimeInterval: TimeInterval(frameRate), repeats: true) { timer in
             if !gameOver {
                 handleJumps()
@@ -284,6 +297,15 @@ struct ContentView: View {
         if score > highScore {
             highScore = score
             UserDefaults.standard.set(highScore, forKey: "highScore")
+        }
+    }
+    
+    func jump() {
+        if !isJumping && !gameOver {
+            isJumping = true
+            velocityY = jumpVelocity
+            dinoImage = "trex"
+            WKInterfaceDevice.current().play(.click)
         }
     }
 }
