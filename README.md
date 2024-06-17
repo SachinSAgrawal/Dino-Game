@@ -12,7 +12,7 @@ I initially recreated the [Dino Game for Fitbit](https://gallery.fitbit.com/deta
 Most of this code was written by ChatGPT. Some of the logic for collision detection and element formatting I needed to fix, but I basically told it to start with a very basic implementation with rectangles to represent the dinosaur and cactus, and slowly had it add more features.
 
 ## Usage
-Simply tap anywhere on screen to make the dinosaur jump over different types of cacti and the occasional pterodactyl as the game gets progressively faster. Each time you successfully do so, your score will increase. Once you do collide with an obstacle, hit the restart button that will appear to play again. Much like the original game, the pterodactyls do not start spawning immediately, and they can also spawn at different heights, so be sure to not jump into them when they are flying higher! 
+Simply tap anywhere on screen or use the Digital Crown to make the dinosaur jump over different types of cacti and the occasional pterodactyl as the game gets progressively faster. Each time you successfully do so, your score will increase. Once you do collide with an obstacle, hit the restart button that will appear to play again. Much like the original game, the pterodactyls do not start spawning immediately, and they can also spawn at different heights, so be sure to not jump into them when they are flying higher! 
 
 ## Installation
 1. Clone this repository or download it as a zip folder and uncompress it.

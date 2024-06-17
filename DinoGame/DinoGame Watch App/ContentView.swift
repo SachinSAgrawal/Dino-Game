@@ -28,7 +28,6 @@ struct ContentView: View {
     @State private var line2X: CGFloat = WKInterfaceDevice.current().screenBounds.width / 4 - 50
     @State private var cloudX: CGFloat = WKInterfaceDevice.current().screenBounds.width
     @State private var crownRotation: Double = 0
-    @State private var velocity = 0.0
 
     let gravity: CGFloat = 0.8
     let jumpVelocity: CGFloat = -10.0
