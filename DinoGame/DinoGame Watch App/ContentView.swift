@@ -58,7 +58,7 @@ struct ContentView: View {
             // Cloud
             Image("cloud")
                 .resizable()
-                .frame(width: 30, height: 20)
+                .frame(width: 30, height: 22)
                 .offset(x: cloudX, y: -WKInterfaceDevice.current().screenBounds.height / 2 + 70)
             
             // Ground
@@ -128,6 +128,15 @@ struct ContentView: View {
         .onTapGesture {
             jump()
         }
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    let horizontalTranslation = value.translation.height
+                    if horizontalTranslation < 0 {
+                        jump()
+                    }
+                }
+        )
         .focusable()
         .digitalCrownRotation(detent: $crownRotation, from: 0.0, through: 1.0, by: 1.0, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: false) { crownEvent in
             if crownEvent.velocity != 0.0 {
@@ -177,7 +186,7 @@ struct ContentView: View {
         }
         
         // And pterodactyl flying
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { timer in
             if !gameOver && showPterodactyl {
                 pterodactylFrame = pterodactylFrame == 1 ? 2 : 1
                 pterodactylImage = "bird-frame_\(pterodactylFrame)"
