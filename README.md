@@ -41,7 +41,7 @@ If you find one, feel free to open up a new issue or even better, create a pull 
 * v1.2 - swipe up support
 
 ## To-Do List
-- [ ] Add ability to use Double Tap gesture <img src="https://help.apple.com/assets/6580A106ABAA01F3080E7505/6580A11008DFECBA0F060581/en_US/c157f2233cff9e4cf78134124ff24ecd.png" height="12" width="12">
+- [x] Add ability to use Double Tap gesture <img src="https://help.apple.com/assets/6580A106ABAA01F3080E7505/6580A11008DFECBA0F060581/en_US/c157f2233cff9e4cf78134124ff24ecd.png" height="12" width="12">
 
 ## Contributors
 Sachin Agrawal: I'm a self-taught programmer who knows many languages and I'm into app, game, and web development. For more information, check out my website or Github profile. If you would like to contact me, my email is [github@sachin.email](mailto:github@sachin.email).
